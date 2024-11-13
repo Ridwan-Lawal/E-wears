@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+}
+
+@layer base {
+  section {
+    @apply max-w-[480px]  md:max-w-[710px] lg:max-w-5xl xl:max-w-[1300px] mx-auto px-8 md:px-8;
+  }
+
+  h2 {
+    @apply text-gray-800 text-[22px];
+  }
+
+  h3 {
+    @apply text-gray-800 text-base font-medium;
+  }
+}
+
+@layer components {
+  .btn-arrangement {
+    @apply flex items-center gap-2 border py-2 px-4 rounded-md shadow-md shadow-gray-200;
+  }
+  .icons {
+    @apply text-lg text-gray-600;
+  }
+
+  /* nav */
+  .nav__icon {
+    @apply text-gray-900 text-2xl hover:text-blue-900 transition-colors;
+  }
+
+  /* filters */
+
+  .filter__reusable-block {
+    @apply flex items-center gap-3;
+  }
+
+  .filter__reusable-icon {
+    @apply text-xl text-gray-300;
+  }
+
+  .filter__reusable-value {
+    @apply text-[15px] text-gray-600;
+  }
+
+  /* product details */
+  .section {
+    @apply mt-8 space-y-4;
+  }
+
+  .section p {
+    @apply text-gray-400 text-sm;
+  }
+  .section div {
+    @apply flex items-center flex-wrap gap-3;
+  }
+  div .quantity {
+    @apply border border-gray-300 w-fit flex items-center gap-6 py-2 px-2 rounded-md;
+  }
+  .quantity:first-child {
+    @apply text-gray-500 cursor-pointer;
+  }
+
+  .quantity:last-child {
+    @apply text-gray-500 cursor-pointer;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* cart */
+  .summary {
+    @apply flex items-center justify-between text-gray-600 font-medium text-[15px];
+  }
+
+  /* pagination */
+  .pagination .btn {
+    @apply h-8 w-8  rounded-sm;
+  }
+  .pagination .btn-active {
+    @apply bg-indigo text-white;
+  }
+  .pagination .btn-not-active {
+    @apply bg-gray-100 text-gray-800;
+  }
+
+  /* payment */
+  .payment-block {
+    @apply flex gap-5 items-center border-b border-gray-400 pb-2 px-2;
+  }
+
+  .payment-block input {
+    @apply placeholder:text-gray-400 text-sm text-gray-800 focus:border-lightBlue focus:outline-none w-full;
+  }
+}
+
+@layers utilities {
+  /* spinner */
+  .spinner {
+    margin: 4.8rem auto;
+    width: 6.4rem;
+    height: 6.4rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(farthest-side, #4f46e5 94%, transparent)
+        top/10px 10px no-repeat,
+      conic-gradient(transparent 30%, #4f46e5);
+    -webkit-mask: radial-gradient(
+      farthest-side,
+      transparent calc(100% - 10px),
+      #000 0
+    );
+    mask: radial-gradient(farthest-side, transparent calc(100% - 10px), #000 0);
+    animation: spinner-rotation 1.5s infinite linear;
+  }
+
+  @keyframes spinner-rotation {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .loader {
+    width: 60px;
+    aspect-ratio: 1;
+    padding: 10px;
+    box-sizing: border-box;
+    display: grid;
+    border: 3px solid white;
+  }
+  .loader,
+  .loader:before,
+  .loader:after {
+    --c: no-repeat linear-gradient(#046d8b 0 0);
+    background: var(--c), var(--c), var(--c), var(--c);
+    animation: l18-1 1.5s infinite cubic-bezier(0, 0, 1, 1), l18-2 1.5s infinite;
+  }
+  .loader:before,
+  .loader:after {
+    content: "";
+    grid-area: 1/1;
+    animation-timing-function: cubic-bezier(0, 0.2, 1, 1), linear;
+  }
+  .loader:after {
+    margin: 10px;
+    animation-timing-function: cubic-bezier(0, 0.4, 1, 1), linear;
+  }
+  @keyframes l18-1 {
+    0%,
+    10% {
+      background-size: 0 4px, 4px 0;
+    }
+    40%,
+    60% {
+      background-size: 100% 4px, 4px 100%;
+    }
+    90%,
+    100% {
+      background-size: 0 4px, 4px 0;
+    }
+  }
+  @keyframes l18-2 {
+    0%,
+    49.9% {
+      background-position: 0 0, 0 0, 100% 100%, 100% 100%;
+    }
+    50%,
+    100% {
+      background-position: 100% 0, 0 100%, 0 100%, 100% 0;
+    }
+  }
+}
