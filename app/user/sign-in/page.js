@@ -23,7 +23,7 @@ function Page() {
           <h2 className="text-[22px] font-sembold">Sign In</h2>
         </div>
 
-        <button className="border border-gray-300   flex items-center gap-4 py-3 px-8 rounded-md w-full sm:w-[80%] justify-center hover:bg-gray-100 transition-colors">
+        <button className="border border-gray-300   flex items-center gap-4 py-3 px-8 rounded-md w-full sm:w-[300px] justify-center hover:bg-gray-100 transition-colors">
           <Image
             src={googleSvg}
             alt="google icon"
