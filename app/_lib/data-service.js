@@ -1,6 +1,4 @@
 import { supabase } from "@/app/_lib/supabase/supabase";
-import { Jimp } from "jimp";
-// import { getPlaiceholder } from "plaiceholder";
 
 export async function getCartByUserId(userId) {
   const { data: cart, error } = await supabase
