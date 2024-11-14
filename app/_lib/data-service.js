@@ -1,4 +1,5 @@
 import { supabase } from "@/app/_lib/supabase/supabase";
+import { Jimp } from "jimp";
 // import { getPlaiceholder } from "plaiceholder";
 
 export async function getCartByUserId(userId) {
@@ -75,19 +76,8 @@ export async function getProductFeatures() {
   }
 }
 
-export async function getImagePlaceholder(src) {
+export async function getImagePlaceholder(imagePath) {
   return null;
-  // try {
-  //   const buffer = await fetch(src).then(async (res) =>
-  //     Buffer.from(await res.arrayBuffer())
-  //   );
-
-  //   const { base64 } = await getPlaiceholder(buffer);
-
-  //   return base64;
-  // } catch (err) {
-  //   console.log(err);
-  // }
 }
 
 export async function getProductById(params) {
@@ -113,3 +103,7 @@ export async function getProductByCollection(query, value) {
     throw new Error(err.message);
   }
 }
+
+// create a blurred image with an ai
+// deal with the filter menu the background opacity or overlay, and make the transition more fast
+// also deal with the error when signing out

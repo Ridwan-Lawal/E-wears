@@ -34,7 +34,7 @@ function FilterMenu() {
 
     return () =>
       currentRef.removeEventListener("click", listenClickOutsideModal);
-  }, [isFilterNavOpen]);
+  }, [isFilterNavOpen, dispatch]);
 
   return (
     <div
@@ -42,13 +42,13 @@ function FilterMenu() {
       className={`fixed navigation lg:block top-0 left-0  bg-black bg-opacity-30 lg:bg-opacity-0 backdrop-blur-[2px] min-h-screen lg:static lg:bg-none lg:backdrop-blur-0 lg:max-w-[260px] z-40 ${
         isFilterNavOpen
           ? "w-full opacity-100"
-          : " bg-opacity-0 opacity-100 lg:w-full lg:opacity-100"
-      } ease-in-out transition-all`}
+          : " bg-opacity-0  lg:w-full lg:opacity-100"
+      }  `}
     >
       <div
         className={`filter-menu  bg-white   pt-3 pb-5 md:pt-0 max-w-[300px] lg:max-w-[300px]  h-screen overflow-auto no-scrollbar ${
           isFilterNavOpen ? "w-full px-4" : "w-0 lg:w-full px-0 "
-        } transition-all duration-300 ease-in-out `}
+        } transition-all  duration-200  `}
       >
         <div>
           {/* Nav */}

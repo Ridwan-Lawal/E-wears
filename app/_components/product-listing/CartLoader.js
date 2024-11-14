@@ -25,7 +25,7 @@ function CartLoader({ session, children }) {
       }
     }
 
-    if (!pathname.includes("/user/sign-in")) gettingProductFromDBOnPageRender();
+    if (session) gettingProductFromDBOnPageRender();
   }, [dispatch, session, pathname]);
 
   return children;
