@@ -1,9 +1,10 @@
 import { addNewUser, getUsersEmail } from "@/app/_lib/data-service";
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
+import GitHub from "next-auth/providers/github";
 
 const authConfig = {
-  providers: [Google],
+  providers: [Google, GitHub],
   pages: {
     signIn: "/user/sign-in",
   },
@@ -13,7 +14,6 @@ const authConfig = {
     },
 
     async signIn({ user }) {
-      console.log(user);
       try {
         const isUserExistInDatabase = await getUsersEmail(user?.email);
 
