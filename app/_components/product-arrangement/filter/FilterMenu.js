@@ -39,9 +39,9 @@ function FilterMenu() {
   return (
     <div
       ref={ref}
-      className={`fixed navigation lg:block top-0 left-0  bg-black bg-opacity-30 lg:bg-opacity-0 backdrop-blur-[2px] min-h-screen lg:static lg:bg-none lg:backdrop-blur-0 lg:max-w-[260px] z-40 ${
+      className={`fixed navigation lg:block top-0 left-0  bg-black lg:bg-opacity-0 backdrop-blur-[2px] min-h-screen lg:static lg:bg-none lg:backdrop-blur-0 lg:max-w-[260px] z-40 ${
         isFilterNavOpen
-          ? "w-full opacity-100"
+          ? "w-full opacity-100 bg-opacity-30 "
           : " bg-opacity-0  lg:w-full lg:opacity-100"
       }  `}
     >
@@ -52,7 +52,7 @@ function FilterMenu() {
       >
         <div>
           {/* Nav */}
-          <div className="flex items-center justify-between border-b md:hidden pb-4 mb-2">
+          <div className="flex items-center justify-between border-b lg:hidden pb-4 mb-2">
             <h2 className="text-gray-800 text-[21px]">Filter</h2>
             <button className="mt-1" onClick={() => dispatch(onToggleNav())}>
               <IoClose className="icons" />

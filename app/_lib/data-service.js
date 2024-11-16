@@ -1,4 +1,5 @@
 import { supabase } from "@/app/_lib/supabase/supabase";
+import { encode } from "blurhash";
 
 export async function getCartByUserId(userId) {
   const { data: cart, error } = await supabase
@@ -74,8 +75,19 @@ export async function getProductFeatures() {
   }
 }
 
-export async function getImagePlaceholder(imagePath) {
-  return null;
+export async function getImagePlaceholder(imageUrl) {
+  try {
+    const response = await fetch(imageUrl);
+
+    const arrayBuffer = await response.arrayBuffer();
+
+    const result = await lqip(Buffer.from(arrayBuffer));
+
+    return result.metadata.dataURIBase64;
+  } catch (error) {
+    console.error("Error generating LQIP:", error);
+    return null;
+  }
 }
 
 export async function getProductById(params) {
@@ -102,6 +114,6 @@ export async function getProductByCollection(query, value) {
   }
 }
 
-// create a blurred image with an ai
-// deal with the filter menu the background opacity or overlay, and make the transition more fast
-// also deal with the error when signing out
+// stage, commit, and push changes to local repo
+// find out why it is slow
+// try to find out how to lazy load image
