@@ -12,9 +12,11 @@ function ProductPrice() {
       {/* price */}
       <h2 className="text-[30px] font-medium text-gray-700 mt-2">
         {formatCurrency(productPrice?.amount)}
-        <span className="text-gray-400 line-through text-xl ml-3">
-          {formatCurrency(productPrice?.listPrice)}
-        </span>
+        {productPrice?.discount && (
+          <span className="text-gray-400 line-through text-xl ml-3">
+            {formatCurrency(productPrice?.listPrice)}
+          </span>
+        )}
       </h2>
 
       {/* percent */}
