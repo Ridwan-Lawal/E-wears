@@ -1,5 +1,5 @@
 import { supabase } from "@/app/_lib/supabase/supabase";
-import { encode } from "blurhash";
+import Image from "next/image";
 
 export async function getCartByUserId(userId) {
   const { data: cart, error } = await supabase
@@ -76,18 +76,7 @@ export async function getProductFeatures() {
 }
 
 export async function getImagePlaceholder(imageUrl) {
-  try {
-    const response = await fetch(imageUrl);
-
-    const arrayBuffer = await response.arrayBuffer();
-
-    const result = await lqip(Buffer.from(arrayBuffer));
-
-    return result.metadata.dataURIBase64;
-  } catch (error) {
-    console.error("Error generating LQIP:", error);
-    return null;
-  }
+  return null;
 }
 
 export async function getProductById(params) {

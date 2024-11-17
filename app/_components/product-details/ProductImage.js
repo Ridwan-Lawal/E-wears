@@ -1,6 +1,9 @@
+import { generateSkeletonDataURL } from "@/app/_lib/skeleton";
 import Image from "next/image";
 
-function ProductImage({ image, imagePlaceholder, onClick, imageOnPriority }) {
+function ProductImage({ image, onClick, imageOnPriority }) {
+  const skeletonURL = generateSkeletonDataURL(100, 150, "#e2e8f0", "#f1f5f9");
+
   return (
     <div
       onClick={onClick}
@@ -14,8 +17,8 @@ function ProductImage({ image, imagePlaceholder, onClick, imageOnPriority }) {
         fill
         className="object-cover"
         quality={100}
-        placeholder={imagePlaceholder ? "blur" : "empty"}
-        blurDataURL={imagePlaceholder}
+        placeholder="blur"
+        blurDataURL={skeletonURL}
         loading="lazy"
       />
     </div>

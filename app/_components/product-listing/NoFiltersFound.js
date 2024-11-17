@@ -1,14 +1,26 @@
 "use client";
 
-import { onClearFilters } from "@/app/_lib/redux/filterSlice";
+import {
+  onClearFilters,
+  onProductsExistForFilters,
+} from "@/app/_lib/redux/filterSlice";
 import { IoShirtOutline } from "react-icons/io5";
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
-function NoFiltersFound() {
+function NoFiltersFound({ sortedData }) {
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (!sortedData?.length) {
+      dispatch(onProductsExistForFilters(false));
+    } else {
+      dispatch(onProductsExistForFilters(true));
+    }
+  }, [dispatch, sortedData]);
+
   return (
-    <div className="flex flex-col items-center justify-center  min-h-[50vh]">
+    <div className="flex flex-col items-center justify-center  min-h-[50vh] w-full">
       <IoShirtOutline className="text-3xl text-indigo" />
       <h3 className="font-normal mt-4 text-2xl text-gray-800">
         Nothing found just yet

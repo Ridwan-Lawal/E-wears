@@ -1,8 +1,10 @@
 "use client";
 
+import { getProductExistForFilters } from "@/app/_lib/redux/filterSlice";
 import clsx from "clsx";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 //   check the price sorting in the productlists component and fix it
 
@@ -11,6 +13,7 @@ function Pagination() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
+  const isProductExistForFilters = useSelector(getProductExistForFilters);
 
   function navigatePage(pageNum) {
     setPageNumber(pageNum);
@@ -21,6 +24,8 @@ function Pagination() {
     params.set("page", pageNumber);
     router.replace(`${pathname}?${params.toString()}`);
   }, [pageNumber, pathname, router, searchParams]);
+
+  if (!isProductExistForFilters) return;
 
   return (
     <div className="flex items-center  justify-center mt-10 pagination  gap-3">

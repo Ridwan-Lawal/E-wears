@@ -2,7 +2,7 @@ import Link from "next/link";
 
 function NotFound() {
   return (
-    <div className="min-h-screen bg-gradient-to-b  flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gradient-to-b  flex items-center justify-center px-4 w-full">
       <div className="max-w-lg w-full  p-8 text-center">
         <h1 className="text-4xl font-bold text-blue-600">404</h1>
         <h2 className="text-2xl font-bold text-gray-800 mb-4">

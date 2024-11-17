@@ -11,6 +11,7 @@ const initialState = {
     colors: "",
     rating: "",
   },
+  isProductsExistForFilter: true,
 };
 
 const filterSlice = createSlice({
@@ -37,14 +38,26 @@ const filterSlice = createSlice({
         rating: "",
       };
     },
+
+    onProductsExistForFilters(state, action) {
+      state.isProductsExistForFilter = action.payload;
+    },
   },
 });
 
-export const { onToggleNav, onFilterProducts, onClearFilters, onSortProducts } =
-  filterSlice.actions;
+export const {
+  onToggleNav,
+  onFilterProducts,
+  onClearFilters,
+  onSortProducts,
+  onProductsExistForFilters,
+} = filterSlice.actions;
 export default filterSlice.reducer;
 
 export const getFilters = (store) => store.filterState.filters;
 export const getSort = (store) => store.filterState.sort;
 
 export const getNavToggle = (store) => store.filterState.isFilterNavOpen;
+
+export const getProductExistForFilters = (store) =>
+  store.filterState.isProductsExistForFilter;

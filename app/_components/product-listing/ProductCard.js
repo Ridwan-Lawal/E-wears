@@ -2,16 +2,18 @@ import ProductColors from "@/app/_components/product-listing/ProductColors";
 import { getImagePlaceholder } from "@/app/_lib/data-service";
 
 import { formatCurrency } from "@/app/_lib/helpers";
+import { generateSkeletonDataURL } from "@/app/_lib/skeleton";
 import Image from "next/image";
 import Link from "next/link";
 
-async function ProductCard({ product, priority }) {
+async function ProductCard({ product, priority, sortedData }) {
   const productImageSrc = product?.images?.at(0)?.image_url;
-  const placeholderSrc = await getImagePlaceholder(productImageSrc);
 
   const inventory = product?.inventory?.at(0);
   const colors = product?.colors;
   const images = product?.images;
+
+  const skeletonURL = generateSkeletonDataURL(280, 280, "#e2e8f0", "#f1f5f9");
 
   return (
     <div className="flex-none   flex flex-col  gap-5 w-full px-6 pb-4 ">
@@ -22,9 +24,9 @@ async function ProductCard({ product, priority }) {
             alt={product?.name}
             fill
             className="object-cover"
-            placeholder={placeholderSrc ? "blur" : "empty"}
-            blurDataURL={placeholderSrc}
-            quality={50}
+            placeholder="blur"
+            blurDataURL={skeletonURL}
+            quality={100}
             priority={priority}
             loading={priority ? "eager" : "lazy"}
           />
@@ -49,7 +51,7 @@ async function ProductCard({ product, priority }) {
         </p>
       </div>
 
-      <ProductColors colors={colors} />
+      <ProductColors colors={colors} sortedData={sortedData} />
     </div>
   );
 }

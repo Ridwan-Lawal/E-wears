@@ -3,7 +3,7 @@ import { IoShirtOutline } from "react-icons/io5";
 
 function EmptyCart() {
   return (
-    <div className="flex flex-col items-center justify-center  min-h-[50vh]">
+    <div className="flex flex-col items-center justify-center  min-h-[50vh] ">
       <IoShirtOutline className="text-3xl text-indigo" />
       <h3 className="font-normal mt-4 text-2xl text-gray-600">Empty Cart?</h3>
 

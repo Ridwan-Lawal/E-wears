@@ -60,18 +60,23 @@ async function ProductLists({ filters }) {
 
   return (
     <div className="lg:h-screen lg:overflow-auto lg:no-scrollbar py-6  ">
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 md:gap-8">
-        {sortedData?.length ? (
-          sortedData?.map((product, id) => (
-            <ProductCard key={id} product={product} priority={id < 2} />
-          ))
-        ) : (
-          <NoFiltersFound />
-        )}
-      </div>
-      {/* <ProductListing>
-      {" "}
-      </ProductListing> */}
+      {sortedData?.length ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 md:gap-8">
+          {sortedData?.map((product, id) => (
+            <ProductCard
+              key={id}
+              product={product}
+              priority={id < 2}
+              sortedData={sortedData}
+            />
+          ))}{" "}
+        </div>
+      ) : (
+        <div>
+          {" "}
+          <NoFiltersFound sortedData={sortedData} />
+        </div>
+      )}
     </div>
   );
 }

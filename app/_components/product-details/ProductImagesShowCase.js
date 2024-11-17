@@ -1,6 +1,7 @@
 "use client";
 
 import ProductImage from "@/app/_components/product-details/ProductImage";
+import { generateSkeletonDataURL } from "@/app/_lib/skeleton";
 
 import Image from "next/image";
 import { useState } from "react";
@@ -9,6 +10,8 @@ function ProductImagesShowCase({ imagesPlaceholderSrcs, images }) {
   const [priorityImgId, setPriorityImgId] = useState(0);
 
   const onClickImage = (id) => setPriorityImgId(id);
+
+  const skeletonURL = generateSkeletonDataURL(200, 300, "#e2e8f0", "#f1f5f9");
 
   return (
     <div className="flex flex-col gap-6 lg:w-[50%]">
@@ -19,18 +22,17 @@ function ProductImagesShowCase({ imagesPlaceholderSrcs, images }) {
           fill
           className="object-cover"
           quality={100}
-          placeholder={imagesPlaceholderSrcs?.at(0) ? "blur" : "empty"}
-          blurDataURL={imagesPlaceholderSrcs?.at(priorityImgId)}
+          placeholder="blur"
+          blurDataURL={skeletonURL}
           priority={true}
         />
       </div>
 
       <div className="  flex items-center gap-5 w-full overflow-x-auto no-scrollbar py-2">
-        {imagesPlaceholderSrcs?.map((imagePlaceholder, id) => (
+        {images?.map((image, id) => (
           <ProductImage
             key={id}
-            imagePlaceholder={imagePlaceholder}
-            image={images[id]}
+            image={image}
             imageOnPriority={priorityImgId === id}
             onClick={() => onClickImage(id)}
           />

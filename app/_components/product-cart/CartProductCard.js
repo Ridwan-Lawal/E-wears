@@ -10,6 +10,7 @@ import {
   onDeleteCartProduct,
   onIncreaseCartProductQuantity,
 } from "@/app/_lib/redux/cartSlice";
+import { generateSkeletonDataURL } from "@/app/_lib/skeleton";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { IoAdd, IoRemove, IoTrash } from "react-icons/io5";
@@ -18,6 +19,7 @@ import { useDispatch } from "react-redux";
 function CartProductCard({ product, priority }) {
   const dispatch = useDispatch();
   const router = useRouter();
+  const skeletonURL = generateSkeletonDataURL(87, 100, "#e2e8f0", "#f1f5f9");
 
   return (
     <div className="">
@@ -32,12 +34,14 @@ function CartProductCard({ product, priority }) {
             fill
             className="object-cover"
             quality={100}
+            placeholder="blur"
+            blurDataURL={skeletonURL}
             priority={priority}
           />
         </div>
 
         <div className="space-y-2.5  flex-grow">
-          <div className="space-y-2 flex items-start justify-between">
+          <div className="space-y-2 flex items-start justify-between gap-2">
             <div
               className="space-y-1 "
               onClick={() => router.push(`/${product?.productId}`)}
@@ -52,7 +56,7 @@ function CartProductCard({ product, priority }) {
                 {product?.productCollection}
               </p>
               <p className="text-[13px] text-gray-400 font-medium ">
-                <span className="capitalize">{product?.productColor}</span> | s:{" "}
+                <span className="capitalize">{product?.productColor}</span> | S:{" "}
                 {product?.productSize}
               </p>
             </div>
