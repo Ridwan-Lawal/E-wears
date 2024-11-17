@@ -57,7 +57,7 @@ function CartProductCard({ product, priority }) {
               </p>
               <p className="text-[13px] text-gray-400 font-medium ">
                 <span className="capitalize">{product?.productColor}</span> | S:{" "}
-                {product?.productSize}
+                {product?.productSize || "N/A"}
               </p>
             </div>
 

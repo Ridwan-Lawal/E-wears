@@ -147,18 +147,22 @@ function ColorSizeQuantity({ currentProductDetails, userId }) {
         <p>Available Sizes</p>
 
         <div>
-          {currentProductDetails?.sizes?.map((size) => (
-            <button
-              key={size}
-              onClick={() => setChosenProductSize(size)}
-              className={clsx(
-                "py-[11px] px-5 rounded-md border border-gray-200 text-sm text-gray-900",
-                { "border border-lightBlue": size === chosenProductSize }
-              )}
-            >
-              {size}
-            </button>
-          ))}
+          {currentProductDetails?.sizes?.length ? (
+            currentProductDetails?.sizes?.map((size) => (
+              <button
+                key={size}
+                onClick={() => setChosenProductSize(size)}
+                className={clsx(
+                  "py-[11px] px-5 rounded-md border border-gray-200 text-sm text-gray-900",
+                  { "border border-lightBlue": size === chosenProductSize }
+                )}
+              >
+                {size}
+              </button>
+            ))
+          ) : (
+            <p className="text-[13px] text-gray-500">N/A</p>
+          )}
         </div>
       </div>
       {/* quantity */}
